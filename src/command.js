@@ -5,6 +5,14 @@ function formatTask(task) {
   return `[${task.id}] (${task.status}) ${task.description}`;
 }
 
+function parseId(raw) {
+  const id  = Number(raw);
+  if(!Number.isInteger(id)){
+    throw new ValidationError(`Expected a numeric task id, got: ${raw ?? '(none)'} `);
+  }
+  return id;
+}
+
 const handlers = {
   add([description]) {
     const task = taskManager.addTask(description);
@@ -12,22 +20,22 @@ const handlers = {
   },
 
   update([id, description]) {
-    const task = taskManager.updateTask(Number(id), description);
+    const task = taskManager.updateTask(parseId(id), description);
     console.log(`Updated task ${task.id}`);
   },
 
   delete([id]) {
-    taskManager.deleteTask(Number(id));
+    taskManager.deleteTask(parseId(id));
     console.log(`Deleted task ${id}`);
   },
 
   'mark-in-progress'([id]) {
-    taskManager.setStatus(Number(id), 'in-progress');
+    taskManager.setStatus(parseId(id), 'in-progress');
     console.log(`Marked task ${id} as in-progress`);
   },
 
   'mark-done'([id]) {
-    taskManager.setStatus(Number(id), 'done');
+    taskManager.setStatus(parseId(id), 'done');
     console.log(`Marked task ${id} as done`);
   },
 
@@ -62,4 +70,4 @@ function runCommand({ command, args }) {
   }
 }
 
-module.exports = { runCommand };
+module.exports = { runCommand, handlers };

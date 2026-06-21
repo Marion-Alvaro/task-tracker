@@ -28,6 +28,12 @@ assert.strictEqual(taskManager.listTasks().length, 0);
 
 assert.throws(() => taskManager.deleteTask(999), TaskNotFoundError);
 
+const {handlers} = require('../src/command');
+const {ValidationError} = require('../src/errors');
+
+assert.throws(() => handlers.update([undefined, 'x']), ValidationError);
+assert.throws(() => handlers.update(['abc', 'x']), ValidationError);
+
 fs.rmSync(tmpDir, { recursive: true, force: true });
 
 console.log('All tests passed.');

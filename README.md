@@ -1,6 +1,8 @@
 # task-tracker
 A simple cli project that let's you create task or to do list
-## Project URL: https://roadmap.sh/projects/task-tracker
+
+## Project page
+[roadmap.sh/projects/task-tracker](https://roadmap.sh/projects/task-tracker)
 
 ## Requirements
 - Node.js >= 14
@@ -24,6 +26,22 @@ node task-cli.js delete 1
 ```bash
 npm link
 task-cli add "Buy milk"
+```
+
+## Project structure
+```
+task-tracker/
+├── task-cli.js          # entry point
+├── src/
+│   ├── args.js          # CLI argument parsing
+│   ├── command.js       # command dispatch + output formatting
+│   ├── errors.js        # custom error types
+│   ├── store.js         # tasks.json read/write
+│   └── taskManager.js   # core task business logic
+├── tests/
+│   └── test.js          # smoke tests
+├── package.json
+└── README.md
 ```
 
 ## Data storage

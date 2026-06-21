@@ -1,8 +1,6 @@
 # task-tracker
 A simple cli project that let's you create task or to do list
-
-# Project URL based on
-https://roadmap.sh/projects/task-tracker
+Project URL: https://roadmap.sh/projects/task-tracker
 
 ## Requirements
 - Node.js >= 14

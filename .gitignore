@@ -134,6 +134,9 @@ dist
 .env.production
 .env.local
 
+# Claude AI
+.claude
+
 # yarn v3
 .pnp.*
 .yarn/*
